@@ -12,7 +12,7 @@ module Fog
         def get_node_list(zone, options = {})
           requested_fqdn = options['fqdn'] || options[:fqdn]
           request(
-            :expects  => 200,
+            :expects  => [ 200, 404 ],
             :idempotent => true,
             :method   => :get,
             :path     => ['AllRecord', zone, requested_fqdn].compact.join('/')
